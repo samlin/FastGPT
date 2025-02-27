@@ -188,7 +188,7 @@ const Login = ({ ChineseRedirectUrl }: { ChineseRedirectUrl: string }) => {
               textAlign={'center'}
               onClick={onOpen}
             >
-              {t('common:support.user.login.can_not_login')}
+            
             </Box>
           )}
         </Flex>
