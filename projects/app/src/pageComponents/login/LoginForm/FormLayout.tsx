@@ -176,7 +176,7 @@ const FormLayout = ({ children, setPageType, pageType }: Props) => {
             alignItems={'center'}
             justifyContent={'center'}
           >
-            {/* <MyImage src={LOGO_ICON} w={['22.5px', '36px']} alt={'icon'} /> */}
+        
           </Flex>
           <Box ml={[3, 5]} fontSize={['lg', 'xl']} fontWeight={'bold'} color={'myGray.900'}>
             {feConfigs?.systemTitle} 艾克斯科技
