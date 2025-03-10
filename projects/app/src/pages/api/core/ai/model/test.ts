@@ -60,6 +60,7 @@ const testLLMModel = async (model: LLMModelItemType) => {
   const ai = getAIApi({
     timeout: 10000
   });
+
   const requestBody = llmCompletionsBodyFormat(
     {
       model: model.model,
@@ -79,8 +80,10 @@ const testLLMModel = async (model: LLMModelItemType) => {
   });
 
   const responseText = response.choices?.[0]?.message?.content;
+  // @ts-ignore
+  const reasoning_content = response.choices?.[0]?.message?.reasoning_content;
 
-  if (!responseText) {
+  if (!responseText && !reasoning_content) {
     return Promise.reject('Model response empty');
   }
 

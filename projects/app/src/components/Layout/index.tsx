@@ -14,6 +14,7 @@ import { useSystem } from '@fastgpt/web/hooks/useSystem';
 import { useDebounceEffect, useMount } from 'ahooks';
 import { useTranslation } from 'next-i18next';
 import { useToast } from '@fastgpt/web/hooks/useToast';
+import WorkorderButton from './WorkorderButton';
 
 const Navbar = dynamic(() => import('./navbar'));
 const NavbarPhone = dynamic(() => import('./navbarPhone'));
@@ -50,8 +51,8 @@ export const navbarWidth = '64px';
 
 const Layout = ({ children }: { children: JSX.Element }) => {
   const router = useRouter();
-  const { t } = useTranslation();
   const { toast } = useToast();
+  const { t } = useTranslation();
   const { Loading } = useLoading();
   const { loading, feConfigs, notSufficientModalType, llmModelList, embeddingModelList } =
     useSystemStore();
@@ -94,13 +95,13 @@ const Layout = ({ children }: { children: JSX.Element }) => {
             status: 'warning',
             title: t('common:llm_model_not_config')
           });
-          router.push('/account/model');
+          router.pathname !== '/account/model' && router.push('/account/model');
         } else if (embeddingModelList.length === 0) {
           toast({
             status: 'warning',
             title: t('common:embedding_model_not_config')
           });
-          router.push('/account/model');
+          router.pathname !== '/account/model' && router.push('/account/model');
         }
       }
     },
@@ -159,6 +160,7 @@ const Layout = ({ children }: { children: JSX.Element }) => {
           {!!userInfo && importantInforms.length > 0 && (
             <ImportantInform informs={importantInforms} refetch={refetchUnRead} />
           )}
+          <WorkorderButton />
         </>
       )}
 

@@ -52,6 +52,12 @@ export const loadSystemModels = async (init = false) => {
         if (model.isDefault) {
           global.systemDefaultModel.llm = model;
         }
+        if (model.isDefaultDatasetTextModel) {
+          global.systemDefaultModel.datasetTextLLM = model;
+        }
+        if (model.isDefaultDatasetImageModel) {
+          global.systemDefaultModel.datasetImageLLM = model;
+        }
       } else if (model.type === ModelTypeEnum.embedding) {
         global.embeddingModelMap.set(model.model, model);
         global.embeddingModelMap.set(model.name, model);
@@ -134,6 +140,16 @@ export const loadSystemModels = async (init = false) => {
     if (!global.systemDefaultModel.llm) {
       global.systemDefaultModel.llm = Array.from(global.llmModelMap.values())[0];
     }
+    if (!global.systemDefaultModel.datasetTextLLM) {
+      global.systemDefaultModel.datasetTextLLM = Array.from(global.llmModelMap.values()).find(
+        (item) => item.datasetProcess
+      );
+    }
+    if (!global.systemDefaultModel.datasetImageLLM) {
+      global.systemDefaultModel.datasetImageLLM = Array.from(global.llmModelMap.values()).find(
+        (item) => item.vision
+      );
+    }
     if (!global.systemDefaultModel.embedding) {
       global.systemDefaultModel.embedding = Array.from(global.embeddingModelMap.values())[0];
     }
@@ -146,6 +162,13 @@ export const loadSystemModels = async (init = false) => {
     if (!global.systemDefaultModel.rerank) {
       global.systemDefaultModel.rerank = Array.from(global.reRankModelMap.values())[0];
     }
+
+    // Sort model list
+    global.systemActiveModelList.sort((a, b) => {
+      const providerA = getModelProvider(a.provider);
+      const providerB = getModelProvider(b.provider);
+      return providerA.order - providerB.order;
+    });
 
     console.log('Load models success', JSON.stringify(global.systemActiveModelList, null, 2));
   } catch (error) {
