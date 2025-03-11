@@ -272,17 +272,6 @@ function CookiesDrawer({ onClose, onAgree }: { onClose: () => void; onAgree: () 
             <Box color={'myGray.900'} fontWeight={'500'} fontSize={'1rem'}>
               {t('login:cookies_tip')}
             </Box>
-            <Box
-              color={'primary.700'}
-              fontWeight={'500'}
-              fontSize={'1rem'}
-              textDecorationLine={'underline'}
-              cursor={'pointer'}
-              w={'fit-content'}
-              onClick={() => window.open(getDocPath('/docs/agreement/privacy/'), '_blank')}
-            >
-              {t('login:privacy_policy')}
-            </Box>
           </Box>
           <Button ml={'0.75rem'} onClick={onAgree}>
             {t('login:agree')}
