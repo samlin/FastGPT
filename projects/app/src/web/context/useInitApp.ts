@@ -31,9 +31,9 @@ export const useInitApp = () => {
     // log fastgpt
     if (!isPlus) {
       console.log(
-        '%cWelcome to ',
+        '%cWelcome to 智云科技AI平台',
         'font-family:Arial; color:#3370ff ; font-size:18px; font-weight:bold;',
-        `GitHub：https://github.com/labring/FastGPT`
+        ``
       );
     }
 
