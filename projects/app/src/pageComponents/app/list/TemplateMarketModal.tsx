@@ -371,24 +371,7 @@ const TemplateMarketModal = ({
                 })}
                 <Box flex={1} />
 
-                {feConfigs?.appTemplateCourse && (
-                  <Flex
-                    alignItems={'center'}
-                    cursor={'pointer'}
-                    _hover={{
-                      color: 'primary.600'
-                    }}
-                    py={2}
-                    fontWeight={500}
-                    rounded={'sm'}
-                    fontSize={'sm'}
-                    onClick={() => window.open(feConfigs.appTemplateCourse)}
-                    gap={1}
-                  >
-                    <MyIcon name={'common/upRightArrowLight'} w={'1rem'} />
-                    <Box>{t('common:contribute_app_template')}</Box>
-                  </Flex>
-                )}
+
               </Flex>
             )}
 
