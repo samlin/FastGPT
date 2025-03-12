@@ -179,7 +179,7 @@ const FormLayout = ({ children, setPageType, pageType }: Props) => {
 
           </Flex>
           <Box ml={[3, 5]} fontSize={['lg', 'xl']} fontWeight={'bold'} color={'myGray.900'}>
-            智云-人工智能AI平台
+            永登二中-AI智能学习平台
           </Box>
         </Flex>
         {!isPc && <I18nLngSelector />}

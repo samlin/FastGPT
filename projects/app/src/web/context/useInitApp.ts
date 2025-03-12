@@ -26,7 +26,7 @@ export const useInitApp = () => {
       feConfigs: { scripts, isPlus, systemTitle }
     } = await clientInitData();
 
-    setTitle('智云-AI人工智能平台');
+    setTitle('永登二中-AI智能学习平台-智云科技');
 
     // log fastgpt
     if (!isPlus) {
